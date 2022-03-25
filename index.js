@@ -35,7 +35,7 @@ app.post('/sendMessage', async function (req, res) {
         <em>Sender name: ${req.body.name}</em><br/>
         <b>Sender address: ${req.body.email}</b>`, // html body
     });
-    res.send('Message sent!');
+    res.send(req.body);
 })
 
 const port = process.env.PORT || 3010;
