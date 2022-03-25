@@ -7,18 +7,10 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(cors({
-    'allowedHeaders': ['sessionId', 'Content-Type'],
-    'exposedHeaders': ['sessionId'],
-    'origin': '*',
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'preflightContinue': false
-}));
+app.use(cors());
 
-require('./router/index')(app);
-
-const smtp_login = process.env.SMTP_LOGIN;
-const smtp_password = process.env.SMTP_PASSWORD;
+const smtp_login = process.env.SMTP_LOGIN || 'roma.kachyra@gmail.com';
+const smtp_password = process.env.SMTP_PASSWORD || 'Roma.kachyra181195';
 
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -46,7 +38,7 @@ app.post('/sendMessage', async function (req, res) {
     res.send(req.body);
 })
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3010;
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
