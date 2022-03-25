@@ -2,7 +2,7 @@ const express = require('express');
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 3010;
+
 const bodyParser = require("body-parser");
 
 app.use(cors());
@@ -37,6 +37,8 @@ app.post('/sendMessage', async function (req, res) {
     });
     res.send('Message sent!');
 })
+
+const port = process.env.PORT || 3010;
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
