@@ -40,7 +40,7 @@ app.post('/sendMessage', async function (req, res) {
     return req.body;
 })
 
-const port = process.env.PORT || 3010;
+const port = process.env.PORT || 80;
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
