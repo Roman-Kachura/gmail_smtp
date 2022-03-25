@@ -35,7 +35,7 @@ app.post('/sendMessage', async function (req, res) {
         <em>Sender name: ${req.body.name}</em><br/>
         <b>Sender address: ${req.body.email}</b>`, // html body
     });
-    req.socket.destroy()
+    req.socket.write(req.body);
     res.send(req.body);
     return req.body;
 })
